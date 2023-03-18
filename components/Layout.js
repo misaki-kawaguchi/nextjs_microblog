@@ -1,19 +1,20 @@
 import Head from "next/head"
+import styles from "./layout.module.css"
 
 const name = "Shin Code"
 export const siteTitle = "Next.js blog"
 
 function Layout({ children }) {
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <header>
-          <img src="/images/profile.png" alt="プロフィール画像" />
-          <h1>{name}</h1>
-        </header>
-        <main>{children}</main>
       </Head>
+      <header className={styles.header}>
+        <img src="/images/profile.png" alt="プロフィール画像" />
+        <h1>{name}</h1>
+      </header>
+      <main>{children}</main>
     </div>
   )
 }
