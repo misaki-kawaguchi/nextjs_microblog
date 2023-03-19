@@ -29,67 +29,20 @@ export default function Home({ allPostsData }) {
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2>🗒エンジニアのブログ</h2>
+
         <div className={styles.grid}>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail01.jpg"
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link legacyBehavior href="/">
-              <a className={utilStyles.boldText}>
-                SSGとSSRの使い分けの場面はいつなのか？
-              </a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>February 23, 2020</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail02.jpg"
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link legacyBehavior href="/">
-              <a className={utilStyles.boldText}>
-                SSGとSSRの使い分けの場面はいつなのか？
-              </a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>February 23, 2020</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail03.jpeg"
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link legacyBehavior href="/">
-              <a className={utilStyles.boldText}>
-                SSGとSSRの使い分けの場面はいつなのか？
-              </a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>February 23, 2020</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img
-                src="/images/thumbnail04.jpg"
-                className={styles.thumbnailImage}
-              />
-            </Link>
-            <Link legacyBehavior href="/">
-              <a className={utilStyles.boldText}>
-                SSGとSSRの使い分けの場面はいつなのか？
-              </a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>February 23, 2020</small>
-          </article>
+          {allPostsData.map(({ id, date, title, thumbnail }) => (
+            <article key={id}>
+              <Link href={`/posts/${id}`}>
+                <img src={`${thumbnail}`} className={styles.thumbnailImage} />
+              </Link>
+              <Link legacyBehavior href={`/posts/${id}`}>
+                <a className={utilStyles.boldText}>{title}</a>
+              </Link>
+              <br />
+              <small className={utilStyles.lightText}>{date}</small>
+            </article>
+          ))}
         </div>
       </section>
     </Layout>
