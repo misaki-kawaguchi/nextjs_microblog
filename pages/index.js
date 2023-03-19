@@ -3,10 +3,23 @@ import Layout from "@/components/Layout"
 import utilStyles from "@/styles/utils.module.css"
 import Link from "next/link"
 import styles from "@/styles/Home.module.css"
+import { getPostsData } from "@/lib/post"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export default function Home() {
+// SSGの場合
+// getStaticProps：外部から一度だけデータを取得する
+export async function getStaticProps() {
+  const allPostsData = getPostsData() // id, title, date, thumbnail
+  console.log(allPostsData)
+  return {
+    props: {
+      allPostsData,
+    },
+  }
+}
+
+export default function Home({ allPostsData }) {
   return (
     <Layout>
       <section className={utilStyles.headingMd}>
